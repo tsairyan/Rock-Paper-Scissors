@@ -2,34 +2,74 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto:wght@300&display=swap');
 *{
     margin: 0;
     padding: 0;
-    font-family: "Montserrat";
+    background: #1B3E6C;
+    max-height: 100%;
+    color: white;
+    font-family: Montserrat;
 }
-
-
- .buts {
-    display: flex;
-    gap: 100px;
+@font-face{
+    font-family: NineTsukiRegular;
+    src: url(/home/ryan/Rock-Paper-Scissors/font/NineTsukiRegular.ttf);
+}
+#title {
   
+    text-align: center;
+    font-family: NineTsukiRegular;
+    color: white;
+    font-size: 100px;
+    margin-top: 30px;
+    
+}
+.buts {
+    display: flex;
+    gap: 75px;
+
 } 
+.ann {
+    border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.move {
+    margin-bottom: 50px;
+    gap: 25px;
+ 
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+
+}
 button {
     height: 50px;
     width: 125px;
-    
+    font-family: Montserrat;
+    font-weight: bold;
+    border-radius: 10px;
+    border: solid 1px #13233F;
+    background-color: #13233F;
+    font-size: 20px;
+
+}
+button:hover {
+    background-color: grey;
+    border: solid 1px grey;
 }
 
 .container {
-    border: 10px solid blue;
-    margin-bottom: 500px;
+    border: 1px solid red;
+    font-family: Montserrat;
+    color: white;
 }
-body {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 100px;
-    
-    
+.scores {
+    text-align: center;
+    font-family: Montserrat;
+    color: white;
+    font-size: 20px;
 }

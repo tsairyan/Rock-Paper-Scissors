@@ -10,20 +10,6 @@ document.getElementById("Scissors").addEventListener("click", s);
 
 let val = 0;
 let pcVal = 0;
-// document.querySelector(".test").addEventListener("click", function score() {
-    
-//     const score = document.querySelector("#yourScore");
-//     val++;
-//     score.textContent = "Your Score: " + val; 
-    
-// });
-// document.querySelector(".test2").addEventListener("click", function score() {
-    
-//     const score = document.querySelector("#pcScore");
-//     pcVal++;
-//     score.textContent = "Your Score: " + pcVal; 
-    
-// });
 
 function computerPlay() {
     let x = Math.floor(Math.random() * 3) + 1;
@@ -39,8 +25,6 @@ function computerPlay() {
         return "Scissors";
     }
 }
-
-
 
 function score() {
     if (val + 1 == 5) {
@@ -74,12 +58,13 @@ function playAgain(str) {
     mess.classList.add("mess");
     if (str == "win") {
         mess.textContent = "You Won! " + (val + 1) + `-` + pcVal;
-        mess.setAttribute('style', 'font-size: 30px; color: blue;');
+        mess.setAttribute('style', 'font-size: 20px; color: blue; text-align: center; max-width: 125px; color: white; ');
         container.appendChild(mess);
         
     } else if (str == "lost"){
         mess.textContent = "You Lost " + (val) + `-` + (pcVal + 1);
-        mess.setAttribute('style', 'font-size: 30px; color: red;');
+        mess.setAttribute('style', 'font-size: 20px; color: red; max-width: 125px; color: white;');
+        mess.fontColor =  "white";
         container.appendChild(mess);
     }
     const buttonList = document.querySelector(".buts");
@@ -92,67 +77,69 @@ function playAgain(str) {
 
     const playA = document.createElement("button");
     playA.classList.add("playAgain");
-    playA.textContent = "Play Again?";
+    playA.textContent = "Play Again";
     container.appendChild(playA);
+    playA.style.height = "50px";
+    playA.style.marginTop = "15px";
+    playA.style.width = "125px";
+    playA.style.align = "center";
     playA.addEventListener("click", function() {
-        location.reload();
+    location.reload();
     });
 
 }
 
 
 function play(playerSelection, computerSelection) {
-
-
-playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
-if (playerSelection == "Rock") {
-    if (computerSelection == "Rock") {
-        displayResults("Rock and Rock: Tie");
-        return "Tie";
+    playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+    if (playerSelection == "Rock") {
+        if (computerSelection == "Rock") {
+            displayResults("Rock and Rock: Tie");
+            return "Tie";
+        }
+        if (computerSelection == "Paper") {
+            displayResults("Paper beats Rock: You lost");
+            scorePc()
+            return "You lost!";
+        }
+        if (computerSelection == "Scissors") {
+            displayResults("Rock beats Scissors: You won!");
+            score();
+            return "You won!";
+        }
     }
-    if (computerSelection == "Paper") {
-        displayResults("Paper beats Rock: You lost");
-        scorePc()
-        return "You lost!";
+    if (playerSelection == "Scissors") {
+        if (computerSelection == "Rock") {
+            displayResults("Rock beats Scissors: You lost");
+            scorePc()
+            return "You lost";
+        }
+        if (computerSelection == "Paper") {
+            displayResults("Scissors beats Paper: You won");
+            score();
+            return "You won!";
+        }
+        if (computerSelection == "Scissors") {
+            displayResults("Scissors and Scissors: Tie");
+            return "Tie!";
+        }
     }
-    if (computerSelection == "Scissors") {
-        displayResults("Rock beats Scissors: You won!");
-        score();
-        return "You won!";
+    if (playerSelection == "Paper") {
+        if (computerSelection == "Rock") {
+            displayResults("Paper beats Rock: You won");
+            score();
+            return "You won!";
+        }
+        if (computerSelection == "Paper") {
+            displayResults("Paper and Paper: Tie");
+            return "Tie!";
+        }
+        if (computerSelection == "Scissors") {
+            displayResults("Scissors beats Paper: You lost");
+            scorePc()
+            return "You lost!";
+        }
     }
-}
-if (playerSelection == "Scissors") {
-    if (computerSelection == "Rock") {
-        displayResults("Rock beats Scissors: You lost");
-        scorePc()
-        return "You lost";
-    }
-    if (computerSelection == "Paper") {
-        displayResults("Scissors beats Paper: You won");
-        score();
-        return "You won!";
-    }
-    if (computerSelection == "Scissors") {
-        displayResults("Scissors and Scissors: Tie");
-        return "Tie!";
-    }
-}
-if (playerSelection == "Paper") {
-    if (computerSelection == "Rock") {
-        displayResults("Paper beats Rock: You won");
-        score();
-        return "You won!";
-    }
-    if (computerSelection == "Paper") {
-        displayResults("Paper and Paper: Tie");
-        return "Tie!";
-    }
-    if (computerSelection == "Scissors") {
-        displayResults("Scissors beats Paper: You lost");
-        scorePc()
-        return "You lost!";
-    }
-}
 }
 
 
@@ -168,13 +155,13 @@ function displayResults(str) {
 
         div.classList.add("result");
         div.textContent = str;
-        div.setAttribute('style', 'font-size: 30px; margin-bottom: 650px');
+        div.setAttribute('style', 'font-size: 30px; text-align: center;  ');
         container.appendChild(div);
     } else {
 
         div.classList.add("result");
         div.textContent = str;
-        div.setAttribute('style', 'font-size: 30px; margin-bottom: 650px');
+        div.setAttribute('style', 'font-size: 30px; text-align: center; ');
         container.appendChild(div);
     }
     
