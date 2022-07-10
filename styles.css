@@ -30,7 +30,6 @@
 
 } 
 .ann {
-    border: 2px solid green;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
